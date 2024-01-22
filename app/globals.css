@@ -4,26 +4,30 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 180, 180, 180;
-  --background-end-rgb: 230, 230, 230;
+  --background-start-rgba: 255, 255, 255, 1;
+  --background-end-rgba: 175, 172, 179, 1;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 40, 40, 40;
-    --background-end-rgb: 10, 10, 10;
+    --background-start-rgba: 40, 40, 40, 1;
+    --background-end-rgba: 10, 10, 10, 1;
   }
+}
+
+a {
+  transition: all 0.2s;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
-      45deg,
-      rgb(var(--background-start-rgb)),
-      rgb(var(--background-end-rgb))
+      135deg,
+      rgba(var(--background-start-rgba)),
+      rgba(var(--background-end-rgba))
     )
-    rgb(var(--background-start-rgb));
+    rgba(var(--background-start-rgba));
 }
 
 @layer utilities {
