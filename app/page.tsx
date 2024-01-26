@@ -2,8 +2,11 @@ import Image from "next/image";
 import { josefin_sans, source_sans } from "./ui/fonts";
 import Link from "next/link";
 import { FaScrewdriverWrench, FaLinkedinIn, FaGithub } from "react-icons/fa6";
+import { getProjects } from "./lib/data";
 
-export default function Home() {
+export default async function Home() {
+  const projects = await getProjects();
+
   return (
     <main className="flex min-h-screen flex-col p-6 font-light text-center items-center mt-20">
       <Image
@@ -47,9 +50,24 @@ export default function Home() {
             className="flex items-center text-blue-700 hover:text-blue-500"
           >
             <FaGithub className="me-1" />
-            <p>GitHub</p>
+            <span>GitHub</span>
           </Link>
         </p>
+      </div>
+      <div className="mt-6">
+        <h2 className="text-2xl mb-4">Projects</h2>
+        {projects.map((project, i) => {
+          return (
+            <div key={i}>
+              <h3 className="text-xl">{project.name}</h3>
+              <p>{project.description}</p>
+              <p>{project.technologies}</p>
+              <Link href={project.github_url ?? ""}>GitHub Repository</Link>
+              <span> | </span>
+              <Link href={project.deployed_url ?? ""}>Deployed Site</Link>
+            </div>
+          );
+        })}
       </div>
     </main>
   );
