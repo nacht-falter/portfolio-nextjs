@@ -6,7 +6,11 @@ dotenv.config(); // Load environment variables from .env file
 
 const POSTGRES_URL = process.env.POSTGRES_URL || "";
 
-const sql = postgres(POSTGRES_URL, { max: 1, idle_timeout: 20, max_lifetime: 60 * 30 })
+const sql = postgres(POSTGRES_URL, {
+  max: 1,
+  idle_timeout: 20,
+  max_lifetime: 60 * 30,
+});
 
 export const getProjects = async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));

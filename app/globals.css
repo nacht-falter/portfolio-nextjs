@@ -30,8 +30,153 @@ body {
     rgba(var(--background-start-rgba));
 }
 
+main {
+  margin-top: 10vh;
+  transform: translateX(-100vw);
+  animation: fly-in-left 1s ease 4s forwards;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  animation: shrink 2s ease 3s forwards;
+  overflow: visible;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+.main-title {
+  transform: translateX(-100vw);
+  text-shadow:
+    -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+  color: #222;
+  transition: 0.2s;
+  animation: fly-in-left 2s ease 1s forwards;
+  z-index: 2;
+  padding-right: 0.5rem;
+}
+
+.subtitle {
+  transform: translateX(100vw);
+  transition: 0.2s;
+  animation: fly-in-right 2s ease 1s forwards;
+  z-index: 2;
+  padding-left: 0.5rem;
+}
+
+.main-title-link:hover .main-title {
+  color: #fff;
+  text-shadow:
+    -1px -1px 0 transparent,
+    1px -1px 0 transparent,
+    -1px 1px 0 transparent,
+    1px 1px 0 transparent;
+  padding-right: 1rem;
+}
+
+.main-title-link:hover .subtitle {
+  color: #222;
+  text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;
+  padding-left: 1rem;
+}
+
+.animation-cols > div {
+  transform: translateY(-100vh);
+  z-index: 1;
+  height: 100vh;
+  background-color: #111;
+  border-left: 1px solid #ccc;
+  animation:
+    col-up 0.5s calc(var(--delay-up) * 2s) forwards,
+    col-down 0.5s calc(var(--delay-down) * 2s + 2s) forwards;
+}
+
+.animation-cols > div:nth-child(1) {
+  --delay-up: 0;
+  --delay-down: 1;
+}
+
+.animation-cols > div:nth-child(2) {
+  --delay-up: 0.1;
+  --delay-down: 1.1;
+}
+
+.animation-cols > div:nth-child(3) {
+  --delay-up: 0.2;
+  --delay-down: 1.2;
+}
+
+.animation-cols > div:nth-child(4) {
+  --delay-up: 0.3;
+  --delay-down: 1.3;
+}
+
+.animation-cols > div:nth-child(5) {
+  --delay-up: 0.4;
+  --delay-down: 1.4;
+}
+
+.animation-cols > div:nth-child(6) {
+  --delay-up: 0.5;
+  --delay-down: 1.5;
+}
+
+@keyframes fly-in-right {
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(0vw);
+  }
+}
+
+@keyframes fly-in-left {
+  from {
+    transform: translateX(-100vw);
+  }
+  to {
+    transform: translateX(0vw);
+  }
+}
+
+@keyframes col-down {
+  from {
+    transform: translateY(0vh);
+    height: 100vh;
+  }
+  to {
+    transform: translateY(100vh);
+    height: 0vh;
+  }
+}
+
+@keyframes col-up {
+  from {
+    transform: translateY(-100vh);
+  }
+  to {
+    transform: translateY(0vh);
+  }
+}
+
+@keyframes shrink {
+  from {
+    height: 100vh;
+  }
+  to {
+    height: 10vh;
   }
 }

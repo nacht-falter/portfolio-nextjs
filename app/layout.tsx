@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { source_sans } from "./ui/fonts";
+import { comfortaa } from "./ui/fonts";
 
 export const metadata: Metadata = {
   title: "Johannes Bernet | Full-Stack Software Developer",
@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={source_sans.className}>{children}</body>
+      <body className={comfortaa.className}>{children}</body>
     </html>
   );
 }

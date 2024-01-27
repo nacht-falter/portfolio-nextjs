@@ -1,10 +1,10 @@
-import { Source_Sans_3, Josefin_Sans } from "next/font/google";
+import { Comfortaa, Montserrat } from "next/font/google";
 
-export const source_sans = Source_Sans_3({
+export const comfortaa = Comfortaa({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "600", "700", "900"],
+  weight: ["300", "400", "600", "700"],
 });
-export const josefin_sans = Josefin_Sans({
+export const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "600", "700"],
+  weight: ["100", "200", "300", "400", "600", "700", "900"],
 });
