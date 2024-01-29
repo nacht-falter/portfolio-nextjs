@@ -1,11 +1,13 @@
-import { comfortaa, montserrat } from "./ui/fonts";
+import { comfortaa } from "./ui/fonts";
 import Link from "next/link";
 import { FaScrewdriverWrench, FaLinkedinIn, FaGithub } from "react-icons/fa6";
-import { getProjects } from "./lib/data";
+import { getProjects, getTechnologies } from "./lib/data";
 import Header from "./header";
+import Image from "next/image";
 
 export default async function Home() {
   const projects = await getProjects();
+  const technologies = await getTechnologies();
 
   return (
     <>
@@ -47,8 +49,23 @@ export default async function Home() {
               <div key={i}>
                 <h3 className="text-xl">{project.name}</h3>
                 <p>{project.description}</p>
-                <p>{project.technologies}</p>
-                <Link href={project.github_url ?? ""}>GitHub Repository</Link>
+                <ul>
+                  {project.technologies?.map((tech, i) => {
+                    return (
+                      <li key={i} className="align-middle inline-block">
+                        <Image
+                          src={`https://simpleicons.org/icons/${tech.icon}.svg`}
+                          alt={tech.name}
+                          width={20}
+                          height={20}
+                          className="inline-block align-middle filter invert"
+                          title={tech.name}
+                        />
+                      </li>
+                    );
+                  })}
+                </ul>
+                <Link href={project.repo_url ?? ""}>GitHub Repository</Link>
                 <span> | </span>
                 <Link href={project.deployed_url ?? ""}>Deployed Site</Link>
               </div>

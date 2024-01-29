@@ -5,7 +5,14 @@ export type Project = {
   end_date?: Date;
   image?: string;
   description?: string;
-  technologies?: string;
+  technologies?: Technology[];
   deployed_url?: string;
-  github_url?: string;
-}
+  repo_url?: string;
+};
+
+export type Technology = {
+  id: number;
+  name: string;
+  icon: string;
+  url: string;
+};
