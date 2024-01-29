@@ -18,11 +18,11 @@ export default async function Projects() {
                 return (
                   <li key={i} className="align-middle inline-block">
                     <Image
-                      src={`https://simpleicons.org/icons/${tech.icon}.svg`}
+                      src={`https://cdn.simpleicons.org/${tech.icon}`}
                       alt={tech.name}
                       width={20}
                       height={20}
-                      className="inline-block align-middle filter invert"
+                      className="inline-block align-middle tech-icon"
                       title={tech.name}
                     />
                   </li>

@@ -28,7 +28,7 @@ export default function Header() {
   );
 
   return (
-    <header className="flex justify-center items-center overflow-x-clip pt-6 lg:mt-0">
+    <header className="flex justify-center items-center overflow-x-clip pt-10">
       <div
         className={`${animationFinished ? "hidden" : ""} flex w-full h-0 absolute top-0 animation-cols`}
       >
@@ -44,18 +44,18 @@ export default function Header() {
         className={`${animationFinished ? "main-title-link" : ""}`}
       >
         <h1
-          className={`${montserrat.className} antialiased flex-col lg:flex-row flex items-center`}
+          className={`${montserrat.className} antialiased flex-col md:flex-row flex items-center`}
         >
-          <span className="lg:hidden flex items-center justify-center aspect-square p-1 pt-2 rounded-full logo-bg w-10 h-10 mb-2">
+          <span className="md:hidden flex items-center justify-center aspect-square p-1 rounded-full logo-bg w-9 h-9 mb-2">
             {logo}
           </span>
-          <span className="main-title uppercase text-right text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-extrabold">
+          <span className="main-title uppercase text-right text-2xl md:text-3xl md:text-4xl xl:text-5xl font-extrabold">
             Johannes Bernet
           </span>
-          <span className="hidden lg:flex items-center justify-center aspect-square p-2 pt-3 rounded-full logo-bg mx-3 w-12 h-12">
+          <span className="hidden md:flex items-center justify-center aspect-square p-1.5 rounded-full logo-bg mx-3 w-11 h-11">
             {logo}
           </span>
-          <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-left subtitle">
+          <span className="text-xl md:text-2xl md:text-3xl lg:text-4xl font-extrabold text-left subtitle">
             Software Developer
           </span>
         </h1>

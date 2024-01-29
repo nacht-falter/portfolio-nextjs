@@ -4,7 +4,7 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --secondary-rgb: 34, 34, 34;
+  --secondary-rgb: 224, 102, 245;
   --background-start-rgb: 0, 16, 7;
   --background-end-rgb: 0, 8, 30;
 }
@@ -88,10 +88,10 @@ footer {
 .main-title-link:hover .main-title {
   color: rgb(var(--foreground-rgb));
   text-shadow:
-    -1px -1px 0 rgba(var(--secondary-rgb), 0),
-    1px -1px 0 rgba(var(--secondary-rgb), 0),
-    -1px 1px 0 rgba(var(--secondary-rgb), 0),
-    1px 1px 0 rgba(var(--secondary-rgb), 0);
+    -1px -1px 0 transparent,
+    1px -1px 0 transparent,
+    -1px 1px 0 transparent,
+    1px 1px 0 transparent;
 }
 
 .main-title-link:hover .subtitle {
@@ -135,7 +135,7 @@ footer {
   transform: scale(1);
   transition: 0.2s;
   background-color: rgb(var(--foreground-rgb));
-  border: 1px solid rgba(var(--secondary-rgb), 0);
+  border: 1px solid transparent;
   animation: pulse 1s ease 2;
 }
 
@@ -145,7 +145,7 @@ footer {
 }
 
 .main-title-link:hover .logo-bg {
-  background-color: rgba(var(--secondary-rgb), 0);
+  background-color: transparnet;
   border: 1px solid rgb(var(--foreground-rgb));
 }
 
@@ -190,7 +190,7 @@ footer {
 }
 
 .social-link > img {
-  filter: invert(1);
+  filter: brightness(100)
 }
 
 .social-link:hover > img {
