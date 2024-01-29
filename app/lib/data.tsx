@@ -1,6 +1,6 @@
 import postgres from "postgres";
 import dotenv from "dotenv";
-import { Project, Technology } from "./definitions";
+import { Project, SocialLink, Technology } from "./definitions";
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -40,4 +40,10 @@ const getProjectTechnologies = async (projectId: number) => {
     WHERE project_tech.project_id = ${projectId}
   `;
   return technologies;
+};
+
+export const getSocialLinks = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  const socialLinks = await sql<SocialLink[]>`SELECT * FROM social`;
+  return socialLinks;
 };

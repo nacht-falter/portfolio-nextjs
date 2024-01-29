@@ -29,7 +29,7 @@ export default async function Projects() {
                 );
               })}
             </ul>
-            <Link href={project.repo_url ?? ""}>GitHub Repository</Link>
+            <Link href={project.repo_url ?? ""}>Repository</Link>
             <span> | </span>
             <Link href={project.deployed_url ?? ""}>Deployed Site</Link>
           </div>

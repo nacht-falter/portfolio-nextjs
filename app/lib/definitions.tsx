@@ -13,6 +13,13 @@ export type Project = {
 export type Technology = {
   id: number;
   name: string;
-  icon: string;
+  icon?: string;
+  url?: string;
+};
+
+export type SocialLink = {
+  id: number;
+  name: string;
+  icon?: string;
   url: string;
 };
