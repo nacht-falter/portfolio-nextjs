@@ -9,11 +9,6 @@
   --background-end-rgb: 0, 8, 30;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
 section {
   background-color: rgb(var(--foreground-rgb));
   color: rgb(var(--background-start-rgb));
@@ -22,7 +17,7 @@ section {
 }
 
 body {
-  min-height: 85vh;
+  min-height: 100vh;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -35,6 +30,29 @@ body {
 a {
   transition: all 0.2s;
 }
+
+details span {
+  border: 1px solid lightgray;
+  border-top: none;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+  display: inline-block;
+}
+
+summary {
+  margin-bottom: 2px;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  padding-left: 0.5rem;
+}
+
+details[open] summary {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 
 main {
   margin-top: 15vh;
@@ -202,6 +220,10 @@ footer {
 
 .social-link:hover > img {
   filter: invert(0);
+}
+
+.tech-icon {
+  margin-right: 0.5rem;
 }
 
 @keyframes fly-in-right {
