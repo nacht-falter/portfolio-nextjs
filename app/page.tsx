@@ -1,19 +1,18 @@
-import { comfortaa } from "./ui/fonts";
-import { getTechnologies } from "./lib/data";
 import Header from "./header";
 import Projects from "./projects";
 import Footer from "./footer";
+import Tech from "./tech";
+import About from "./about";
 
 export default async function Home() {
-  const technologies = await getTechnologies();
-
   return (
     <>
       <Header />
-      <main className="flex flex-col text-center items-center z-0">
-        <div
-          className={`${comfortaa.className} antialiased text-lg mt-3 flex-col flex text-center items-center`}
-        ></div>
+      <main className="mx-auto md:w-2/3 px-3 md:px-0 pt-12 mt:pt-0">
+        <div className="flex flex-col sm:flex-row gap-6">
+          <About />
+          <Tech />
+        </div>
         <Projects />
       </main>
       <Footer />

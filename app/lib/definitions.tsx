@@ -14,7 +14,7 @@ export type Technology = {
   id: number;
   name: string;
   icon?: string;
-  url?: string;
+  category?: string;
 };
 
 export type SocialLink = {

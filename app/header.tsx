@@ -49,13 +49,13 @@ export default function Header() {
           <span className="md:hidden flex items-center justify-center aspect-square p-1 rounded-full logo-bg w-9 h-9 mb-2">
             {logo}
           </span>
-          <span className="main-title uppercase text-right text-2xl md:text-3xl md:text-4xl xl:text-5xl font-extrabold">
+          <span className="main-title uppercase text-right text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-extrabold">
             Johannes Bernet
           </span>
           <span className="hidden md:flex items-center justify-center aspect-square p-1.5 rounded-full logo-bg mx-3 w-11 h-11">
             {logo}
           </span>
-          <span className="text-xl md:text-2xl md:text-3xl lg:text-4xl font-extrabold text-left subtitle">
+          <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-left subtitle">
             Software Developer
           </span>
         </h1>

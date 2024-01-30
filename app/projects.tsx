@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getProjects } from "./lib/data";
+import { montserrat } from "./ui/fonts";
 
 export default async function Projects() {
   const projects = await getProjects();
 
   return (
-    <div className="mt-6">
-      <h2 className="text-2xl mb-4">Projects</h2>
+    <section className="w-full mt-6">
+      <h2 className={`${montserrat.className} uppercase font-bold text-2xl mb-4`}>Projects</h2>
       {projects.map((project, i) => {
         return (
           <div key={i}>
@@ -35,6 +36,6 @@ export default async function Projects() {
           </div>
         );
       })}
-    </div>
+    </section>
   );
 }

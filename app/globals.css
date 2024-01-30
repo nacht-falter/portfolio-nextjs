@@ -14,6 +14,13 @@
   padding: 0;
 }
 
+section {
+  background-color: rgb(var(--foreground-rgb));
+  color: rgb(var(--background-start-rgb));
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
 body {
   min-height: 85vh;
   color: rgb(var(--foreground-rgb));
@@ -190,7 +197,7 @@ footer {
 }
 
 .social-link > img {
-  filter: brightness(100)
+  filter: invert(1) brightness(100) grayscale(1);
 }
 
 .social-link:hover > img {
