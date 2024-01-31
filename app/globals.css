@@ -4,7 +4,7 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --secondary-rgb: 224, 102, 245;
+  --secondary-rgb: 151, 0, 92;
   --background-start-rgb: 0, 16, 7;
   --background-end-rgb: 0, 8, 30;
 }
@@ -29,8 +29,28 @@ body {
   animation: overflow 0s 6s forwards;
 }
 
+h2, h3 {
+  color: rgb(var(--secondary-rgb));
+}
 a {
+  color: rgb(var(--secondary-rgb));
+  border-bottom: 1px solid transparent;
   transition: all 0.2s;
+}
+
+
+a span {
+  color: rgb(var(--secondary-rgb));
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+a:hover span {
+  border-bottom: 1px solid rgb(var(--secondary-rgb));
+}
+
+.text-xs {
+  font-size: 0.8rem;
 }
 
 main {
