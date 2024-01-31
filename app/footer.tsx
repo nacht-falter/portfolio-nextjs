@@ -46,7 +46,6 @@ export default async function Footer() {
           </Link>
         </span>
         <span className="mt-3 text-xs">
-          <Link href="/imprint">Imprint & Privacy</Link>
           <span className="border-l-white">© {new Date().getFullYear()} Johannes Bernet</span>
         </span>
       </div>
