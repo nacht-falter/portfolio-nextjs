@@ -14,7 +14,9 @@ const sql = postgres(POSTGRES_URL, {
 
 export const getProjects = async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  const projects = await sql<Project[]>`SELECT * FROM projects ORDER BY start_date DESC`
+  const projects = await sql<
+    Project[]
+  >`SELECT * FROM projects ORDER BY start_date DESC`;
   for (const project of projects) {
     project.technologies = await getProjectTechnologies(project.id);
   }
@@ -23,7 +25,9 @@ export const getProjects = async () => {
 
 export const getTechnologies = async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  const technologies = await sql<Technology[]>`SELECT * FROM technologies`;
+  const technologies = await sql<
+    Technology[]
+  >`SELECT * FROM technologies ORDER BY sort_key`;
   return technologies;
 };
 
@@ -46,6 +50,7 @@ const getProjectTechnologies = async (projectId: number) => {
     FROM technologies tech
     JOIN project_technologies project_tech ON tech.id = project_tech.technology_id
     WHERE project_tech.project_id = ${projectId}
+    ORDER BY tech.sort_key
   `;
   return technologies;
 };
