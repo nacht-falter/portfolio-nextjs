@@ -9,11 +9,11 @@ export default function Header() {
   const [animationFinished, setAnimationFinished] = useState<boolean>(false);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
+    const animationTimeout = setTimeout(() => {
       setAnimationFinished(true);
-    }, 7000);
+    }, 6000);
     return () => {
-      clearTimeout(timeout);
+      clearTimeout(animationTimeout);
     };
   }, []);
 

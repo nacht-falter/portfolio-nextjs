@@ -26,56 +26,26 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-  animation: overflow 0.1s 5s forwards;
+  animation: overflow 0 6s forwards;
 }
 
 a {
   transition: all 0.2s;
 }
 
-details span {
-  border: 1px solid lightgray;
-  border-top: none;
-  border-bottom-right-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
-  padding: 0.5rem;
-  width: 100%;
-  display: inline-block;
-}
-
-summary {
-  margin-bottom: 2px;
-  border-radius: 0.5rem;
-  transition: all 0.2s;
-  padding-left: 0.5rem;
-}
-
-details[open] summary {
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-
-main {
-  margin-top: 15vh;
-  transform: translateX(-100vw);
-  animation: fly-in-left 1s ease 6s forwards;
-}
-
 header {
-  position: absolute;
-  top: 0;
   width: 100vw;
-  height: 100vh;
-  animation: shrink 2s ease 5s forwards;
+  min-height: 100vh;
+  animation: shrink 2s ease 4s forwards;
   overflow: visible;
 }
 
 footer {
   height: 10vh;
   transform: translateY(10vh);
-  animation: fly-in-bottom 1s ease 6s forwards;
+  animation: fly-in-bottom 1s ease 5s forwards;
 }
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -91,7 +61,7 @@ footer {
     1px 1px 0 rgb(var(--foreground-rgb));
   color: rgb(var(--background-start-rgb));
   transition: 0.3s;
-  animation: fly-in-left 2s ease 3s forwards;
+  animation: fly-in-left 2s ease 2s forwards;
   z-index: 2;
   letter-spacing: 0.1rem;
 }
@@ -99,7 +69,7 @@ footer {
 .subtitle {
   transform: translateX(100vw);
   transition: 0.3s;
-  animation: fly-in-right 2s ease 3s forwards;
+  animation: fly-in-right 2s ease 2s forwards;
   z-index: 2;
   letter-spacing: 0.2rem;
   color: rgb(var(--foreground-rgb));
@@ -137,8 +107,8 @@ footer {
   background-color: rgb(var(--background-start-rgb));
   border-left: 1px solid rgba(var(--foreground-rgb), 0.7);
   animation:
-    col-up 0.5s calc(var(--delay-up) * 2s + 2s) forwards,
-    col-down 0.5s calc(var(--delay-down) * 2s + 4s) forwards;
+    col-up 0.5s calc(var(--delay-up) * 2s + 1s) forwards,
+    col-down 0.5s calc(var(--delay-down) * 2s + 3s) forwards;
 }
 
 .logo {
@@ -163,7 +133,7 @@ footer {
   transition: 0.2s;
   background-color: rgb(var(--foreground-rgb));
   border: 1px solid transparent;
-  animation: pulse 1s ease 2;
+  animation: pulse 1s ease 1s;
 }
 
 .logo-bg {
@@ -237,6 +207,28 @@ footer {
   }
 }
 
+details span {
+  border: 1px solid lightgray;
+  border-top: none;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+  display: inline-block;
+}
+
+summary {
+  margin-bottom: 2px;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  padding-left: 0.5rem;
+}
+
+details[open] summary {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 @keyframes fly-in-left {
   from {
     transform: translateX(-100vw);
@@ -277,10 +269,10 @@ footer {
 
 @keyframes shrink {
   from {
-    height: 100vh;
+    min-height: 100vh;
   }
   to {
-    height: 15vh;
+    min-height: 10vh;
   }
 }
 @keyframes pulse {

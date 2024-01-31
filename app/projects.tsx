@@ -23,7 +23,7 @@ export default async function Projects() {
             key={i}
             className="flex flex-col md:flex-row border-b border-slate-200 mt-6 pb-6 gap-4"
           >
-            <span className="md:w-1/3 hidden md:inline-block">
+            <span className="flex-1 hidden md:inline-block">
               <Image
                 src={
                   project.image ||
@@ -34,7 +34,7 @@ export default async function Projects() {
                 height={200}
               />
             </span>
-            <span className="md:w-2/3">
+            <span className="flex-1">
               <span className="md:hidden">
                 <Image
                   src={
