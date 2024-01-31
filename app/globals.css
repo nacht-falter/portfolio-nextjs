@@ -36,11 +36,6 @@ h3 {
 a {
   color: rgb(var(--secondary-rgb));
   transition: all 0.2s;
-  border-bottom: 1px solid transparent;
-}
-
-a:hover {
-  border-bottom: 1px solid rgb(var(--secondary-rgb));
 }
 
 .project-link {
