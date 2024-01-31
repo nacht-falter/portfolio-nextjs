@@ -19,7 +19,7 @@ export default async function Projects() {
       </h2>
       {projects.map((project, i) => {
         return (
-          <div key={i}>
+          <div key={i} className="border-b border-slate-200 mt-6 pb-6">
             <span className="flex justify-between mb-3">
               <span className="text-lg">{project.name}</span>
               <span className="text-xs">
