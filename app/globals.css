@@ -4,7 +4,7 @@
 
 :root {
   --foreground-rgb: 255, 255, 255;
-  --secondary-rgb: 151, 0, 92;
+  --secondary-rgb: 24, 0, 135;
   --background-start-rgb: 0, 16, 7;
   --background-end-rgb: 0, 8, 30;
 }
@@ -29,23 +29,28 @@ body {
   animation: overflow 0s 6s forwards;
 }
 
-h2, h3 {
+h2,
+h3 {
   color: rgb(var(--secondary-rgb));
 }
+
 a {
   color: rgb(var(--secondary-rgb));
-  border-bottom: 1px solid transparent;
   transition: all 0.2s;
+  border-bottom: 1px solid transparent;
 }
 
+a:hover {
+  border-bottom: 1px solid rgb(var(--secondary-rgb));
+}
 
-a span {
+.project-link {
   color: rgb(var(--secondary-rgb));
   border-bottom: 1px solid transparent;
   transition: all 0.2s;
 }
 
-a:hover span {
+.project-link:hover {
   border-bottom: 1px solid rgb(var(--secondary-rgb));
 }
 
@@ -54,8 +59,8 @@ a:hover span {
 }
 
 main {
-  transform: translateX(-100vw);
-  animation: fly-in-left 2s ease 4s forwards;
+  opacity: 1;
+  animation: opacity 0.5s ease;
 }
 
 header {
@@ -107,6 +112,14 @@ footer {
   }
 }
 
+.main-title-link {
+  border: none;
+}
+
+.main-title-link:hover {
+  border: none;
+}
+
 .main-title-link:hover .main-title {
   color: rgb(var(--foreground-rgb));
   text-shadow:
@@ -114,6 +127,7 @@ footer {
     1px -1px 0 transparent,
     -1px 1px 0 transparent,
     1px 1px 0 transparent;
+  border: none;
 }
 
 .main-title-link:hover .subtitle {
@@ -123,6 +137,7 @@ footer {
     1px -1px 0 rgb(var(--foreground-rgb)),
     -1px 1px 0 rgb(var(--foreground-rgb)),
     1px 1px 0 rgb(var(--foreground-rgb));
+  border: none;
 }
 
 .animation-cols > div {
@@ -318,5 +333,14 @@ details[open] summary {
   }
   to {
     overflow: auto;
+  }
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

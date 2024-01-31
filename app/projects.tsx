@@ -15,7 +15,7 @@ export default async function Projects() {
       <h2
         className={`${montserrat.className} uppercase font-bold text-2xl mb-4`}
       >
-        Projects
+        Software Projects
       </h2>
       {projects.map((project, i) => {
         return (
@@ -76,6 +76,7 @@ export default async function Projects() {
                   href={project.repo_url ?? ""}
                   title="Got to code repository on GitHub"
                   className="flex mt-3 items-center text-xs"
+                  target="_blank"
                 >
                   <Image
                     src="https://cdn.simpleicons.org/github"
@@ -84,7 +85,7 @@ export default async function Projects() {
                     height={15}
                     className="inline-block align-middle tech-icon"
                   />
-                  <span> GitHub Repo</span>
+                  <span className="project-link">GitHub Repo</span>
                 </Link>
               )}
               {project.deployed_url && (
@@ -92,6 +93,7 @@ export default async function Projects() {
                   href={project.deployed_url ?? ""}
                   title="Go to deployed site"
                   className="flex mt-3 items-center text-xs"
+                  target="_blank"
                 >
                   <Image
                     src="/globe-solid.svg"
@@ -100,7 +102,7 @@ export default async function Projects() {
                     height={15}
                     className="inline-block align-middle tech-icon"
                   />
-                  <span>{project.deployed_url}</span>
+                  <span className="project-link">{project.deployed_url}</span>
                 </Link>
               )}
               <details className="mt-3">
