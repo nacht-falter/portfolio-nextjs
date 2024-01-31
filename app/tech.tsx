@@ -13,7 +13,7 @@ export default async function Tech() {
       {categories.map((category, key) => {
         return (
           <div key={key}>
-            <h3>{capitalizeFirstLetter(category.replace(/[0-9]/g, ''))}</h3>
+            <h3 className="mt-3">{capitalizeFirstLetter(category.replace(/[0-9]/g, ''))}</h3>
             {technologies
               ?.filter((tech) => tech.category === category)
               .map((tech, i) => {
