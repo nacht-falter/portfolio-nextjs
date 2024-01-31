@@ -10,10 +10,10 @@ export default function About() {
       </h2>
       <p>
         I am a software developer based in Freiburg, Germany. I love solving
-        problems and building things with code.
+        problems and building things.
       </p>
       <p className="mt-3">
-        I have an academic background in musicology as a researcher and teacher.
+        I have a background in musicology as a researcher and teacher.
       </p>
     </section>
   );

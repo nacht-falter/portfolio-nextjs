@@ -9,7 +9,7 @@ export default async function Tech() {
 
   return (
     <section className="w-full md:w-1/3">
-      <h2 className={`${montserrat.className} uppercase font-bold text-2xl mb-4`}>What I work with</h2>
+      <h2 className={`${montserrat.className} uppercase font-bold text-2xl mb-4`}>What I use</h2>
       {categories.map((category, key) => {
         return (
           <div key={key}>
