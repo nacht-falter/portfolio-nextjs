@@ -19,65 +19,93 @@ export default async function Projects() {
       </h2>
       {projects.map((project, i) => {
         return (
-          <div key={i} className="border-b border-slate-200 mt-6 pb-6">
-            <span className="flex justify-between mb-3">
-              <span className="text-lg">{project.name}</span>
-              <span className="text-xs">
-                {formatDate(project.start_date)}-{formatDate(project.end_date)}
-              </span>
+          <div
+            key={i}
+            className="flex flex-col md:flex-row border-b border-slate-200 mt-6 pb-6 gap-4"
+          >
+            <span className="md:w-1/3 hidden md:inline-block">
+              <Image
+                src={
+                  project.image ||
+                  `https://placehold.co/300x200?text=${project.name}`
+                }
+                alt={project.name}
+                width={300}
+                height={200}
+              />
             </span>
-            <details className="mt-3">
-              <summary className="w-full bg-slate-200">Show Details</summary>
-              <span>{project.description}</span>
-            </details>
-            <ul className="mt-3 flex justify-end">
-              {project.technologies?.map((tech, i) => {
-                return (
-                  <li key={i} className="align-middle inline-block">
-                    <Image
-                      src={`https://cdn.simpleicons.org/${tech.icon}`}
-                      alt={tech.name}
-                      width={20}
-                      height={20}
-                      className="inline-block align-middle tech-icon"
-                      title={tech.name}
-                    />
-                  </li>
-                );
-              })}
-            </ul>
-            {project.repo_url && (
-              <Link
-                href={project.repo_url ?? ""}
-                title="Got to code repository on GitHub"
-                className="block mt-3"
-              >
+            <span className="md:w-2/3">
+              <span className="md:hidden">
                 <Image
-                  src="https://cdn.simpleicons.org/github"
-                  alt="github icon"
-                  width={20}
-                  height={20}
-                  className="inline-block align-middle tech-icon"
+                  src={
+                    project.image ||
+                    `https://placehold.co/300x200?text=${project.name}`
+                  }
+                  alt={project.name}
+                  width={80}
+                  height={60}
                 />
-                <span> GitHub Repo</span>
-              </Link>
-            )}
-            {project.deployed_url && (
-              <Link
-                href={project.deployed_url ?? ""}
-                title="Go to deployed site"
-                className="block mt-3"
-              >
-                <Image
-                  src="/globe-solid.svg"
-                  alt="globe icon"
-                  width={20}
-                  height={20}
-                  className="inline-block align-middle tech-icon"
-                />
-                <span> Deployed site</span>
-              </Link>
-            )}
+              </span>
+              <span className="flex justify-between mb-3">
+                <span className="text-lg">{project.name}</span>
+                <span className="text-xs">
+                  {formatDate(project.start_date)}-
+                  {formatDate(project.end_date)}
+                </span>
+              </span>
+              <details className="mt-3">
+                <summary className="w-full bg-slate-200">Show Details</summary>
+                <span>{project.description}</span>
+              </details>
+              <ul className="mt-3 flex justify-end">
+                {project.technologies?.map((tech, i) => {
+                  return (
+                    <li key={i} className="align-middle inline-block">
+                      <Image
+                        src={`https://cdn.simpleicons.org/${tech.icon}`}
+                        alt={tech.name}
+                        width={20}
+                        height={20}
+                        className="inline-block align-middle tech-icon"
+                        title={tech.name}
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+              {project.repo_url && (
+                <Link
+                  href={project.repo_url ?? ""}
+                  title="Got to code repository on GitHub"
+                  className="block mt-3"
+                >
+                  <Image
+                    src="https://cdn.simpleicons.org/github"
+                    alt="github icon"
+                    width={20}
+                    height={20}
+                    className="inline-block align-middle tech-icon"
+                  />
+                  <span> GitHub Repo</span>
+                </Link>
+              )}
+              {project.deployed_url && (
+                <Link
+                  href={project.deployed_url ?? ""}
+                  title="Go to deployed site"
+                  className="block mt-3"
+                >
+                  <Image
+                    src="/globe-solid.svg"
+                    alt="globe icon"
+                    width={20}
+                    height={20}
+                    className="inline-block align-middle tech-icon"
+                  />
+                  <span> Deployed site</span>
+                </Link>
+              )}
+            </span>
           </div>
         );
       })}
