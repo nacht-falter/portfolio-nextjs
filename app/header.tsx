@@ -55,7 +55,7 @@ export default function Header() {
           <span className="hidden md:flex items-center justify-center aspect-square p-1.5 rounded-full logo-bg mx-3 w-11 h-11">
             {logo}
           </span>
-          <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-left subtitle">
+          <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-left subtitle">
             Software Developer
           </span>
         </h1>
