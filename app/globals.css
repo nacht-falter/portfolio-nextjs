@@ -268,6 +268,7 @@ summary {
   border-radius: 0.5rem;
   transition: all 0.2s;
   padding-left: 0.5rem;
+  cursor: pointer;
 }
 
 details[open] summary {
