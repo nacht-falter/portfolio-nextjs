@@ -228,6 +228,16 @@ footer {
   transition: all 0.2s;
 }
 
+.social-link-dark {
+  border: 1px dashed rgb(var(--background-start-rgb));
+  background-color: transparent;
+  transition: all 0.2s;
+}
+
+.social-link-dark:hover {
+  background-color: rgb(var(--background-start-rgb));
+}
+
 .social-link:hover {
   background-color: rgb(var(--foreground-rgb));
 }
@@ -238,6 +248,10 @@ footer {
 
 .social-link:hover > img {
   filter: invert(0);
+}
+
+.social-link-dark:hover > img {
+  filter: invert(1) brightness(100) grayscale(1);
 }
 
 .tech-icon {
