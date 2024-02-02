@@ -14,10 +14,10 @@ export default async function Tech() {
       >
         What I use
       </h2>
-      <div class="section-container">
+      <div className="divide-y divide-slate-200">
         {categories.map((category, key) => {
           return (
-            <span key={key} className="flex flex-col xl:flex-row xl:items-center tech-category">
+            <span key={key} className="px-6 py-3 first:pt-0 flex flex-col xl:flex-row items-center justify-between tech-category">
               <h3 className="me-2">
                 {capitalizeFirstLetter(category.replace(/[0-9]/g, "")) + ":"}
               </h3>
