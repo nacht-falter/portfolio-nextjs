@@ -7,20 +7,31 @@ import Image from "next/image";
 
 export default function Header() {
   const [animationFinished, setAnimationFinished] = useState<boolean>(false);
+  const [showScrollButton, setShowScrollButton] = useState<boolean>(false);
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
-    const scrollToTop = () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
     const animationTimeout = setTimeout(() => {
       setAnimationFinished(true);
     }, 6000);
 
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setShowScrollButton(true);
+      } else {
+        setShowScrollButton(false);
+      }
+    };
+
     scrollToTop();
+
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
       clearTimeout(animationTimeout);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
   const logo = (
@@ -66,6 +77,13 @@ export default function Header() {
           </span>
         </h1>
       </Link>
+      <button
+        onClick={scrollToTop}
+        className={`${(showScrollButton && "opacity-100") || "opacity-0"} rounded-full bottom-0 m-6 p-3 aspect-square flex items-center text-lg go-up-button`}
+        title="Scroll to top"
+      >
+        🠅
+      </button>
     </header>
   );
 }

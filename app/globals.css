@@ -294,6 +294,26 @@ details[open] summary {
   border-bottom-left-radius: 0;
 }
 
+.go-up-button {
+  border: 1px solid rgb(var(--foreground-rgb));
+  background-color: rgb(var(--background-start-rgb));
+  z-index: 3;
+  transition: all 0.2s;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+@media (min-width: 768px) {
+  .go-up-button {
+    right: 17vw;
+  }
+}
+
+.go-up-button:hover {
+  background-color: rgb(var(--secondary-rgb));
+}
+
 @keyframes fly-in-left {
   from {
     transform: translateX(-100vw);
