@@ -9,14 +9,20 @@ export default function Header() {
   const [animationFinished, setAnimationFinished] = useState<boolean>(false);
 
   useEffect(() => {
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
     const animationTimeout = setTimeout(() => {
       setAnimationFinished(true);
     }, 6000);
+
+    scrollToTop();
+
     return () => {
       clearTimeout(animationTimeout);
     };
   }, []);
-
   const logo = (
     <Image
       src="/nacht-falter_large_shadow.svg"
