@@ -14,7 +14,7 @@ export default async function Tech() {
       >
         What I use
       </h2>
-      <div>
+      <div class="section-container">
         {categories.map((category, key) => {
           return (
             <span key={key} className="flex flex-col xl:flex-row xl:items-center tech-category">

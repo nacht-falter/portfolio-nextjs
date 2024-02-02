@@ -29,7 +29,7 @@ section h2 {
 }
 
 section p,
-section div {
+.section-container {
   padding: 0 2rem 0.5rem 2rem;
 }
 
@@ -306,7 +306,13 @@ details[open] summary {
 
 @media (min-width: 768px) {
   .go-up-button {
-    right: 17vw;
+    right: 12.5vw;
+  }
+}
+
+@media (min-width: 1280px) {
+  .go-up-button {
+    right: 16.5vw;
   }
 }
 
