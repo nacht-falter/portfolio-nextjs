@@ -4,6 +4,7 @@ import Link from "next/link";
 import { montserrat } from "./ui/fonts";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { ArrowUpIcon } from "@heroicons/react/24/outline";
 
 export default function Header() {
   const [animationFinished, setAnimationFinished] = useState<boolean>(false);
@@ -79,10 +80,10 @@ export default function Header() {
       </Link>
       <button
         onClick={scrollToTop}
-        className={`${(showScrollButton && "opacity-100") || "opacity-0"} rounded-full bottom-0 m-6 p-3 aspect-square flex items-center text-lg go-up-button`}
+        className={`${(showScrollButton && "opacity-100") || "opacity-0"} rounded-full bottom-0 m-6 p-2 aspect-square flex items-center text-lg go-up-button`}
         title="Scroll to top"
       >
-        🠅
+        <ArrowUpIcon className="h-4 w-4 text-white" />
       </button>
     </header>
   );

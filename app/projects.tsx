@@ -58,7 +58,7 @@ export default async function Projects({ query }: { query: string }) {
                     </span>
                   </div>
                   <div className="lg:px-6">
-                    <span className="hidden lg:flex flex w-full items-center justify-center mb-3">
+                    <span className="hidden lg:flex w-full items-center justify-center mb-3">
                       {projectImage(
                         project.image ?? "",
                         project.name,
