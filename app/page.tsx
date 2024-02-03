@@ -4,7 +4,7 @@ import Footer from "./footer";
 import Tech from "./tech";
 import About from "./about";
 
-export default async function Home({
+export default async function Page({
   searchParams,
 }: {
   searchParams?: { query?: string };

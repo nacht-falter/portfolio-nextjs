@@ -1,6 +1,11 @@
 import postgres from "postgres";
 import dotenv from "dotenv";
-import { Project, SocialLink, Technology } from "./definitions";
+import {
+  Project,
+  ProjectTechnology,
+  SocialLink,
+  Technology,
+} from "./definitions";
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -12,19 +17,9 @@ const sql = postgres(POSTGRES_URL, {
   max_lifetime: 60 * 30,
 });
 
-export const fetchProjects = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  const projects = await sql<
-    Project[]
-  >`SELECT * FROM projects ORDER BY start_date DESC`;
-  for (const project of projects) {
-    project.technologies = await fetchProjectTechnologies(project.id);
-  }
-  return projects;
-};
-
 export const fetchFilteredProjects = async (query: string) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
+  const projectTechnologies = await fetchProjectTechnologies();
   const projects = await sql<Project[]>`
     SELECT
       projects.id AS id,
@@ -55,9 +50,11 @@ export const fetchFilteredProjects = async (query: string) => {
     ORDER BY
       projects.start_date DESC;
   `;
-  // for (const project of projects) {
-  //   project.technologies = await fetchProjectTechnologies(project.id);
-  // }
+  for (const project of projects) {
+    project.technologies = projectTechnologies.filter(
+      (tech) => tech.project_id === project.id,
+    );
+  }
   return projects;
 };
 
@@ -69,7 +66,7 @@ export const fetchTechnologies = async () => {
   return technologies;
 };
 
-export const getTechCategories = async () => {
+export const fetchTechCategories = async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   const result = await sql`
     SELECT DISTINCT category FROM technologies ORDER BY category
@@ -78,17 +75,17 @@ export const getTechCategories = async () => {
   return categories;
 };
 
-const fetchProjectTechnologies = async (projectId: number) => {
+const fetchProjectTechnologies = async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  const technologies = await sql<Technology[]>`
-    SELECT 
-        tech.id as id,
+
+  const technologies = await sql<ProjectTechnology[]>`
+     SELECT 
+        project_tech.project_id as project_id,
+        tech.id as technology_id,
         tech.name as name,
         tech.icon as icon
-    FROM technologies tech
-    JOIN project_technologies project_tech ON tech.id = project_tech.technology_id
-    WHERE project_tech.project_id = ${projectId}
-    ORDER BY tech.sort_key
+      FROM project_technologies project_tech
+      JOIN technologies tech ON tech.id = project_tech.technology_id
   `;
   return technologies;
 };

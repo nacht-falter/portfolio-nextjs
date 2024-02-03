@@ -23,3 +23,11 @@ export type SocialLink = {
   icon?: string;
   url: string;
 };
+
+export type ProjectTechnology = {
+  id: number;
+  project_id: number;
+  technology_id: number;
+  name: string;
+  icon: string;
+};

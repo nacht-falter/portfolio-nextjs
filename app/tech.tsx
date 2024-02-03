@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { getTechCategories, fetchTechnologies } from "./lib/data";
+import { fetchTechCategories, fetchTechnologies } from "./lib/data";
 import { capitalizeFirstLetter } from "./lib/utils";
 import { montserrat } from "./ui/fonts";
 
 export default async function Tech() {
-  const categories = await getTechCategories();
+  const categories = await fetchTechCategories();
   const technologies = await fetchTechnologies();
 
   return (

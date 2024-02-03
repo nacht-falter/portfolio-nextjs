@@ -6,8 +6,9 @@ import { useDebouncedCallback } from "use-debounce";
 
 export default function Search({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams();
-  // const pathname = usePathname();
-  // const { replace } = useRouter();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+  const router = useRouter();
 
   const handleSearch = useDebouncedCallback((term) => {
     const params = new URLSearchParams(searchParams);
@@ -16,10 +17,10 @@ export default function Search({ placeholder }: { placeholder: string }) {
     } else {
       params.delete("query");
     }
-    // replace(`${pathname}?${params.toString()}`);
+    replace(`${pathname}?${params.toString()}`);
 
     // Fix for scroll issue: https://github.com/vercel/next.js/issues/49087
-    // router.push(`${pathname}?${params}`, { scroll: false });
+    router.push(`${pathname}?${params}`, { scroll: false });
   }, 300);
 
   return (
