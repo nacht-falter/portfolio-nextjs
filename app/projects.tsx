@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getProjects } from "./lib/data";
+import { fetchFilteredProjects } from "./lib/data";
 import { montserrat } from "./ui/fonts";
+import Search from "./search";
 
-export default async function Projects() {
-  const projects = await getProjects();
+export default async function Projects({ query }: { query: string }) {
+  const projects = await fetchFilteredProjects(query);
   const formatDate = (date?: Date) =>
     date
       ? date.toLocaleDateString("en-US", { month: "short", year: "numeric" })
@@ -31,6 +32,7 @@ export default async function Projects() {
       >
         Software Projects
       </h2>
+      <Search placeholder="Search Projects ... " />
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-0 lg:gap-6 p-0 lg:px-6 section-container">
         {projects.map((project, i) => {
           return (

@@ -12,18 +12,56 @@ const sql = postgres(POSTGRES_URL, {
   max_lifetime: 60 * 30,
 });
 
-export const getProjects = async () => {
+export const fetchProjects = async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   const projects = await sql<
     Project[]
   >`SELECT * FROM projects ORDER BY start_date DESC`;
   for (const project of projects) {
-    project.technologies = await getProjectTechnologies(project.id);
+    project.technologies = await fetchProjectTechnologies(project.id);
   }
   return projects;
 };
 
-export const getTechnologies = async () => {
+export const fetchFilteredProjects = async (query: string) => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  const projects = await sql<Project[]>`
+    SELECT
+      projects.id AS id,
+      projects.name AS name,
+      projects.description AS description,
+      projects.start_date AS start_date,
+      projects.end_date AS end_date,
+      projects.deployed_url AS deployed_url,
+      projects.repo_url AS repo_url,
+      projects.image AS image,
+      projects.tags AS tags
+    FROM
+      projects
+    JOIN
+      project_technologies ON projects.id = project_technologies.project_id
+    JOIN
+      technologies ON project_technologies.technology_id = technologies.id
+    WHERE
+      projects.name ILIKE ${`%${query}%`} OR
+      technologies.name ILIKE ${`%${query}%`} OR
+      projects.start_date::text ILIKE ${`%${query}%`} OR
+      projects.end_date::text ILIKE ${`%${query}%`} OR
+      projects.description ILIKE ${`%${query}%`} OR
+      ${`%${query}%`} = ANY(projects.tags)
+    GROUP BY
+      projects.id, projects.name, projects.description, projects.start_date, projects.end_date,
+      projects.deployed_url, projects.repo_url, projects.image, projects.tags
+    ORDER BY
+      projects.start_date DESC;
+  `;
+  for (const project of projects) {
+    project.technologies = await fetchProjectTechnologies(project.id);
+  }
+  return projects;
+};
+
+export const fetchTechnologies = async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   const technologies = await sql<
     Technology[]
@@ -40,7 +78,7 @@ export const getTechCategories = async () => {
   return categories;
 };
 
-const getProjectTechnologies = async (projectId: number) => {
+const fetchProjectTechnologies = async (projectId: number) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   const technologies = await sql<Technology[]>`
     SELECT 
@@ -55,7 +93,7 @@ const getProjectTechnologies = async (projectId: number) => {
   return technologies;
 };
 
-export const getSocialLinks = async () => {
+export const fetchSocialLinks = async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   const socialLinks = await sql<SocialLink[]>`SELECT * FROM social`;
   return socialLinks;

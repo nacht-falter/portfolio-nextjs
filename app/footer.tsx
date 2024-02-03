@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { getSocialLinks } from "./lib/data";
+import { fetchSocialLinks } from "./lib/data";
 import Link from "next/link";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 export default async function Footer() {
-  const socialLinks = await getSocialLinks();
+  const socialLinks = await fetchSocialLinks();
   const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "";
 
   return (

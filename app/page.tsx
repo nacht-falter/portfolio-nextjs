@@ -4,7 +4,13 @@ import Footer from "./footer";
 import Tech from "./tech";
 import About from "./about";
 
-export default async function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams?: { query?: string };
+}) {
+  const query = searchParams?.query || "";
+
   return (
     <>
       <Header />
@@ -13,7 +19,7 @@ export default async function Home() {
           <About />
           <Tech />
         </div>
-        <Projects />
+        <Projects query={query} />
       </main>
       <Footer />
     </>

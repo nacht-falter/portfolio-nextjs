@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { getTechCategories, getTechnologies } from "./lib/data";
+import { getTechCategories, fetchTechnologies } from "./lib/data";
 import { capitalizeFirstLetter } from "./lib/utils";
 import { montserrat } from "./ui/fonts";
 
 export default async function Tech() {
   const categories = await getTechCategories();
-  const technologies = await getTechnologies();
+  const technologies = await fetchTechnologies();
 
   return (
     <section className="w-full lg:w-1/3 md:w-1/2">

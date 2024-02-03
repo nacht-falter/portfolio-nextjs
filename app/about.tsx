@@ -2,12 +2,12 @@ import { montserrat } from "./ui/fonts";
 import dotenv from "dotenv";
 import Link from "next/link";
 import Image from "next/image";
-import { getSocialLinks } from "./lib/data";
+import { fetchSocialLinks } from "./lib/data";
 
 dotenv.config();
 
 export default async function About() {
-  const socialLinks = await getSocialLinks();
+  const socialLinks = await fetchSocialLinks();
   const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "";
 
   return (
