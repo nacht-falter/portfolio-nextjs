@@ -61,20 +61,20 @@ export default async function Projects({ query }: { query: string }) {
                     {projectImage(project.image ?? "", project.name, 200, 150)}
                   </span>
                   <ul className="mt-3 lg:flex lg:justify-center">
-                    {project.technologies?.map((tech, i) => {
-                      return (
-                        <li key={i} className="align-middle inline-block">
-                          <Image
-                            src={`https://cdn.simpleicons.org/${tech.icon}`}
-                            alt={tech.name}
-                            width={20}
-                            height={20}
-                            className="inline-block align-middle tech-icon"
-                            title={tech.name}
-                          />
-                        </li>
-                      );
-                    })}
+                  {/*   {project.technologies?.map((tech, i) => { */}
+                  {/*     return ( */}
+                  {/*       <li key={i} className="align-middle inline-block"> */}
+                  {/*         <Image */}
+                  {/*           src={`https://cdn.simpleicons.org/${tech.icon}`} */}
+                  {/*           alt={tech.name} */}
+                  {/*           width={20} */}
+                  {/*           height={20} */}
+                  {/*           className="inline-block align-middle tech-icon" */}
+                  {/*           title={tech.name} */}
+                  {/*         /> */}
+                  {/*       </li> */}
+                  {/*     ); */}
+                  {/*   })} */}
                   </ul>
                   {project.repo_url && (
                     <Link

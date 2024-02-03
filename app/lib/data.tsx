@@ -55,9 +55,9 @@ export const fetchFilteredProjects = async (query: string) => {
     ORDER BY
       projects.start_date DESC;
   `;
-  for (const project of projects) {
-    project.technologies = await fetchProjectTechnologies(project.id);
-  }
+  // for (const project of projects) {
+  //   project.technologies = await fetchProjectTechnologies(project.id);
+  // }
   return projects;
 };
 
