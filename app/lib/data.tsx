@@ -18,9 +18,9 @@ const sql = postgres(POSTGRES_URL, {
 });
 
 export const fetchFilteredProjects = async (query: string) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  const projectTechnologies = await fetchProjectTechnologies();
-  const projects = await sql<Project[]>`
+  try {
+    const projectTechnologies = await fetchProjectTechnologies();
+    const projects = await sql<Project[]>`
     SELECT
       projects.id AS id,
       projects.name AS name,
@@ -50,35 +50,46 @@ export const fetchFilteredProjects = async (query: string) => {
     ORDER BY
       projects.start_date DESC;
   `;
-  for (const project of projects) {
-    project.technologies = projectTechnologies.filter(
-      (tech) => tech.project_id === project.id,
-    );
+    for (const project of projects) {
+      project.technologies = projectTechnologies.filter(
+        (tech) => tech.project_id === project.id,
+      );
+    }
+    return projects;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to fetch projects");
   }
-  return projects;
 };
 
 export const fetchTechnologies = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  const technologies = await sql<
-    Technology[]
-  >`SELECT * FROM technologies ORDER BY sort_key`;
-  return technologies;
+  try {
+    const technologies = await sql<
+      Technology[]
+    >`SELECT * FROM technologies ORDER BY sort_key`;
+    return technologies;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to fetch technologies");
+  }
 };
 
 export const fetchTechCategories = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  const result = await sql`
+  try {
+    const result = await sql`
     SELECT DISTINCT category FROM technologies ORDER BY category
   `;
-  const categories = result.map((result) => result.category);
-  return categories;
+    const categories = result.map((result) => result.category);
+    return categories;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to fetch tech categories");
+  }
 };
 
 const fetchProjectTechnologies = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  const technologies = await sql<ProjectTechnology[]>`
+  try {
+    const technologies = await sql<ProjectTechnology[]>`
      SELECT 
         project_tech.project_id as project_id,
         tech.id as technology_id,
@@ -87,11 +98,14 @@ const fetchProjectTechnologies = async () => {
       FROM project_technologies project_tech
       JOIN technologies tech ON tech.id = project_tech.technology_id
   `;
-  return technologies;
+    return technologies;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to fetch project technologies");
+  }
 };
 
 export const fetchSocialLinks = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
   const socialLinks = await sql<SocialLink[]>`SELECT * FROM social`;
   return socialLinks;
 };
