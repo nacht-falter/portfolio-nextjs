@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Project } from "../lib/definitions";
+import { Project } from "./lib/definitions";
 import Link from "next/link";
 
 export function Project(project: Project) {
