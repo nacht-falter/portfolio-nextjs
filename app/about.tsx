@@ -11,12 +11,7 @@ export default async function About() {
   const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? "";
 
   return (
-    <section className="w-full lg:w-2/3 md:w-1/2">
-      <h2
-        className={`${montserrat.className} uppercase font-bold text-2xl mb-4`}
-      >
-        About Me
-      </h2>
+    <>
       <p>Hi 👋</p>
       <p>My name is Johannes.</p>
       <p>
@@ -62,6 +57,6 @@ export default async function About() {
           </Link>
         </span>
       </p>
-    </section>
+    </>
   );
 }

@@ -13,7 +13,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
   const handleSearch = useDebouncedCallback((term) => {
     const params = new URLSearchParams(searchParams);
     if (term) {
-      params.set("query", term);
+      params.set("query", term.trim());
     } else {
       params.delete("query");
     }
@@ -21,7 +21,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
 
     // Fix for scroll issue: https://github.com/vercel/next.js/issues/49087
     router.push(`${pathname}?${params}`, { scroll: false });
-  }, 300);
+  }, 100);
 
   return (
     <div className="relative flex flex-1 flex-shrink-0 m-6">

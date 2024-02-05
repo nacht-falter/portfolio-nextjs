@@ -8,13 +8,7 @@ export default async function Tech() {
   const technologies = await fetchTechnologies();
 
   return (
-    <section className="w-full lg:w-1/3 md:w-1/2">
-      <h2
-        className={`${montserrat.className} uppercase font-bold text-2xl mb-4`}
-      >
-        What I use
-      </h2>
-      <div className="divide-y divide-slate-200">
+     <div className="divide-y divide-slate-200">
         {categories.map((category, key) => {
           return (
             <span key={key} className="px-6 py-3 first:pt-0 flex flex-col xl:flex-row items-center justify-between tech-category">
@@ -42,6 +36,5 @@ export default async function Tech() {
           );
         })}
       </div>
-    </section>
   );
 }
