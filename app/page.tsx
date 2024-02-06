@@ -6,6 +6,7 @@ import About from "./about";
 import { montserrat } from "./ui/fonts";
 import { Suspense } from "react";
 import Search from "./search";
+import Spinner from "./lib/spinner";
 
 export default async function Page({
   searchParams,
@@ -43,7 +44,8 @@ export default async function Page({
             Software Projects
           </h2>
           <Search placeholder="Filter projects by keywords, technologies, or date" />
-          <Suspense key={query} fallback={<p>Seaching ...</p>}>
+
+          <Suspense key={query} fallback={<Spinner />}>
             <Projects query={query} />
           </Suspense>
         </section>

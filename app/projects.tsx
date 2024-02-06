@@ -10,7 +10,7 @@ export default async function Projects({ query }: { query: string }) {
           return <Project key={i} {...project} />;
         })
       ) : (
-        <div className="flex justify-center items-center h-48">
+        <div className="flex justify-center items-center col-span-full h-32">
           <span>No projects found</span>
         </div>
       )}
