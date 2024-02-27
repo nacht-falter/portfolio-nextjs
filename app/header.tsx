@@ -16,7 +16,7 @@ export default function Header() {
   useEffect(() => {
     const animationTimeout = setTimeout(() => {
       setAnimationFinished(true);
-    }, 6000);
+    }, 5000);
 
     const handleScroll = () => {
       if (window.scrollY > 200) {
