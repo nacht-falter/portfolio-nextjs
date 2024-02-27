@@ -6,7 +6,7 @@
   --foreground-rgb: 255, 255, 255;
   --secondary-rgb: 11, 97, 125;
   --background-start-rgb: 0, 16, 7;
-  --background-end-rgb: 0, 8, 30;
+  --background-end-rgb: 4, 36, 47;
 }
 
 html {
@@ -37,7 +37,7 @@ body {
   min-height: 100vh;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
-      to bottom,
+      135deg,
       rgb(var(--background-start-rgb)),
       rgb(var(--background-end-rgb))
     )
@@ -150,8 +150,12 @@ footer {
   transform: translateY(-100vh);
   z-index: 1;
   height: 100vh;
-  background-color: rgb(var(--background-start-rgb));
-  border-left: 1px solid rgba(var(--foreground-rgb), 0.7);
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+  border-left: 1px solid rgba(var(--foreground-rgb), 0.3);
   animation:
     col-up 0.5s calc(var(--delay-up) * 2s + 1s) forwards,
     col-down 0.5s calc(var(--delay-down) * 2s + 3s) forwards;
@@ -358,11 +362,14 @@ details[open] summary {
   0%,
   65% {
     min-height: 100vh;
+    padding-bottom: 5rem;
   }
   100% {
     min-height: 10vh;
+    padding-bottom: 0;
   }
 }
+
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -384,6 +391,7 @@ details[open] summary {
     overflow: auto;
   }
 }
+
 @keyframes opacity {
   from {
     opacity: 0;
