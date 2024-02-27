@@ -47,16 +47,29 @@ export function Project(project: Project) {
           <ul className="mt-3 lg:flex lg:justify-center">
             {project.technologies?.map((tech, i) => {
               return (
-                <li key={i} className="align-middle inline-block">
-                  <Image
-                    src={`https://cdn.simpleicons.org/${tech.icon}`}
-                    alt={tech.name}
-                    width={20}
-                    height={20}
-                    className="inline-block align-middle tech-icon"
-                    title={tech.name}
-                  />
-                </li>
+                <>
+                  <label
+                    key={i}
+                    className="sr-only"
+                    htmlFor={`${tech.name.toLowerCase()}-${project.id}-${i}`}
+                  >
+                    {tech.name}
+                  </label>
+                  <li
+                    key={i}
+                    className="align-middle inline-block"
+                    id={i.toString()}
+                  >
+                    <Image
+                      src={`https://cdn.simpleicons.org/${tech.icon}`}
+                      alt={tech.name}
+                      width={20}
+                      height={20}
+                      className="inline-block align-middle tech-icon"
+                      title={tech.name}
+                    />
+                  </li>
+                </>
               );
             })}
           </ul>
