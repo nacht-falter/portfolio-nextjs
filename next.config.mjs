@@ -28,7 +28,6 @@ const nextConfig = {
       },
     ],
     dangerouslyAllowSVG: true,
-    domains: ["cdn.simpleicons.org", "simpleicons.org"],
   },
 };
 
