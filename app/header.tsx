@@ -16,7 +16,7 @@ export default function Header() {
   useEffect(() => {
     const animationTimeout = setTimeout(() => {
       setAnimationFinished(true);
-    }, 5000);
+    }, 6000);
 
     const handleScroll = () => {
       if (window.scrollY > 200) {
@@ -47,16 +47,6 @@ export default function Header() {
 
   return (
     <header className="flex justify-center items-center overflow-x-clip pt-10">
-      <div
-        className={`${animationFinished ? "hidden" : ""} flex w-full h-0 absolute top-0 animation-cols`}
-      >
-        <div className="flex-1"></div>
-        <div className="flex-1"></div>
-        <div className="flex-1"></div>
-        <div className="flex-1"></div>
-        <div className="flex-1"></div>
-        <div className="flex-1"></div>
-      </div>
       <Link
         href="/"
         className={`${animationFinished ? "main-title-link" : ""}`}

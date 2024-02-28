@@ -24,6 +24,11 @@ section h2 {
   padding: 1rem 2rem;
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--secondary-rgb));
+  background: linear-gradient(
+    135deg,
+    rgb(var(--secondary-rgb)),
+    rgb(var(--background-end-rgb))
+  );
   border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
 }
@@ -144,21 +149,6 @@ footer {
     -1px 1px 0 rgb(var(--foreground-rgb)),
     1px 1px 0 rgb(var(--foreground-rgb));
   border: none;
-}
-
-.animation-cols > div {
-  transform: translateY(-100vh);
-  z-index: 1;
-  height: 100vh;
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--background-start-rgb)),
-    rgb(var(--background-end-rgb))
-  );
-  border-left: 1px solid rgba(var(--foreground-rgb), 0.3);
-  animation:
-    col-up 0.5s calc(var(--delay-up) * 2s + 1s) forwards,
-    col-down 0.5s calc(var(--delay-down) * 2s + 3s) forwards;
 }
 
 .logo {
@@ -332,26 +322,6 @@ details[open] summary {
 @keyframes fly-in-bottom {
   from {
     transform: translateY(10vh);
-  }
-  to {
-    transform: translateY(0vh);
-  }
-}
-
-@keyframes col-down {
-  from {
-    transform: translateY(0vh);
-    height: 100vh;
-  }
-  to {
-    transform: translateY(100vh);
-    height: 0vh;
-  }
-}
-
-@keyframes col-up {
-  from {
-    transform: translateY(-100vh);
   }
   to {
     transform: translateY(0vh);
