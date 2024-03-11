@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio Player App</title>
+    <style>
+      .player-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1rem;
+        border-top: 1px solid #ccc;
+      }
+
+      .audio-title {
+        display: inline-block;
+        margin-right: 1rem;
+      }
+
+      .remove-button {
+        display: inline-block;
+        margin-top: 0.5rem;
+      }
+
+      .audio-controls {
+        display: flex;
+        flex-direction: row;
+        margin-top: 0.5rem;
+      }
+
+      .volume-container {
+        display: flex;
+        flex: 1;
+      }
+
+      .rate-container {
+        display: flex;
+        flex: 1;
+      }
+
+      .label {
+        margin-right: 1rem;
+        width: 15vw;
+        max-width: 110px;
+        min-width: 110px;
+      }
+
+      .slider-value {
+        margin-left: 1rem;
+        width: 10vw;
+        max-width: 100px;
+      }
+
+      .slider {
+        width: 20vw;
+      }
+
+      @media (max-width: 768px) {
+        .audio-controls {
+          flex-direction: column;
+        }
+        .label {
+          width: 25vw;
+        }
+
+        .slider-value {
+          width: 20vw;
+        }
+
+        .slider {
+          width: 50vw;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Really Simple Audio Mixer</h1>
+    <p>Select an audio file and click "Add"</p>
+    <div>
+      <input type="file" id="fileInput" />
+      <button onclick="addAudioPlayer()">Add</button>
+    </div>
+
+    <div id="audioPlayerContainer"></div>
+
+    <script>
+      function addAudioPlayer() {
+        const fileInput = document.getElementById("fileInput");
+        const audioPlayerContainer = document.getElementById(
+          "audioPlayerContainer",
+        );
+
+        if (fileInput.files.length > 0) {
+          const playerContainer = document.createElement("div");
+          playerContainer.className = "player-container";
+
+          const titleAndRemove = document.createElement("div");
+
+          const audioTitle = document.createElement("h2");
+          audioTitle.className = "audio-title";
+          audioTitle.textContent = fileInput.files[0].name;
+
+          const removeButton = document.createElement("button");
+          removeButton.className = "remove-button";
+          removeButton.textContent = "Remove";
+          removeButton.addEventListener("click", () => {
+            audioPlayerContainer.removeChild(playerContainer);
+          });
+
+          titleAndRemove.appendChild(audioTitle);
+          titleAndRemove.appendChild(removeButton);
+
+          const audioControls = document.createElement("div");
+          audioControls.className = "audio-controls";
+
+          const audioPlayer = document.createElement("audio");
+          audioPlayer.controls = true;
+          audioPlayer.className = "audio-player";
+
+          const source = document.createElement("source");
+          source.src = URL.createObjectURL(fileInput.files[0]);
+          audioPlayer.appendChild(source);
+
+          const rateContainer = document.createElement("div");
+          rateContainer.className = "rate-container";
+
+          const rateLabel = document.createElement("label");
+          rateLabel.className = "label";
+          rateLabel.textContent = "Playback Rate:";
+          rateLabel.htmlFor = "playbackRate";
+
+          const rateInput = document.createElement("input");
+          rateInput.className = "slider";
+          rateInput.type = "range";
+          rateInput.min = 0.5;
+          rateInput.max = 2;
+          rateInput.step = 0.1;
+          rateInput.value = 1;
+
+          const rateDisplay = document.createElement("span");
+          rateDisplay.className = "slider-value";
+          rateDisplay.textContent = rateInput.value;
+
+          rateInput.addEventListener("input", () => {
+            audioPlayer.playbackRate = rateInput.value;
+            rateDisplay.textContent = rateInput.value;
+          });
+
+          const volumeContainer = document.createElement("div");
+          volumeContainer.className = "volume-container";
+
+          const volumeLabel = document.createElement("label");
+          volumeLabel.className = "label";
+          volumeLabel.textContent = "Volume: ";
+          volumeLabel.htmlFor = "volumeInput";
+
+          const volumeInput = document.createElement("input");
+          volumeInput.className = "slider";
+          volumeInput.type = "range";
+          volumeInput.min = 0;
+          volumeInput.max = 1;
+          volumeInput.step = 0.1;
+          volumeInput.value = 1;
+
+          const volumeDisplay = document.createElement("span");
+          volumeDisplay.className = "slider-value";
+          volumeDisplay.textContent = volumeInput.value * 100 + "%";
+
+          volumeInput.addEventListener("input", () => {
+            audioPlayer.volume = volumeInput.value;
+            volumeDisplay.textContent = volumeInput.value * 100 + "%";
+          });
+
+          rateContainer.appendChild(rateLabel);
+          rateContainer.appendChild(rateInput);
+          rateContainer.appendChild(rateDisplay);
+          volumeContainer.appendChild(volumeLabel);
+          volumeContainer.appendChild(volumeInput);
+          volumeContainer.appendChild(volumeDisplay);
+          audioControls.appendChild(rateContainer);
+          audioControls.appendChild(volumeContainer);
+
+          playerContainer.appendChild(titleAndRemove);
+          playerContainer.appendChild(audioPlayer);
+          playerContainer.appendChild(audioControls);
+
+          audioPlayerContainer.appendChild(playerContainer);
+        }
+
+        // fileInput.value = "";
+      }
+    </script>
+  </body>
+</html>

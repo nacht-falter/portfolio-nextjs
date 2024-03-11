@@ -29,6 +29,15 @@ const nextConfig = {
     ],
     dangerouslyAllowSVG: true,
   },
+
+  rewrites: async () => {
+    return [
+      {
+        source: "/audio-mixer",
+        destination: "/audio-mixer.html",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
